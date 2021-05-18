@@ -207,6 +207,12 @@ const SipProvider: React.FC<{ config: JsSipConfig }> = ({
 
     const remoteAudio = createRemoteAudioElement();
     window.document.body.appendChild(remoteAudio);
+
+    return () => {
+      if (window.document.getElementById("sip-provider-audio")) {
+        window.document.getElementById("sip-provider-audio")?.remove();
+      }
+    };
   }, []);
 
   useEffect(() => {
